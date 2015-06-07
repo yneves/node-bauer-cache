@@ -43,6 +43,18 @@ describe("Cache",function() {
     assert.ok(cache instanceof Cache);
   });
   
+  it("expiration strings",function() {
+    var cache = new Cache(options);
+    cache.setExpiration("1m");
+    assert.strictEqual(cache.getExpiration(),60 * 1000);
+    cache.setExpiration("10d");
+    assert.strictEqual(cache.getExpiration(),10 * 24 * 60 * 60 * 1000);
+    cache.setExpiration("2w");
+    assert.strictEqual(cache.getExpiration(),14 * 24 * 60 * 60 * 1000);
+    cache.setExpiration("3h");
+    assert.strictEqual(cache.getExpiration(),3 * 60 * 60 * 1000);
+  });
+  
   it("exists",function(done) {
     var cache = new Cache(options);
     cache.exists(function(error,exists) {
