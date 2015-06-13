@@ -1,6 +1,6 @@
 {
   "name": "bauer-cache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Disk-cache library.",
   "keywords": [
     "disk",
@@ -26,7 +26,7 @@
     "mocha": ">=1.0.0"
   },
   "dependencies": {
-    "bauer-factory": "^1.2.8"
+    "bauer-factory": "^2.0.3"
   },
   "main": "lib/index.js"
 }
