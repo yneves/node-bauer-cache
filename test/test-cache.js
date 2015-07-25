@@ -120,6 +120,28 @@ describe("Cache",function() {
     });
   });
   
+  it("validate",function(done) {
+    var cache = new Cache(options);
+    cache.validate(function(error,valid) {
+      assert.strictEqual(error,null);
+      assert.strictEqual(valid,false);
+      cache.write({ test: true },function(error) {
+        assert.strictEqual(error,null);
+        cache.validate(function(error,valid) {
+          assert.strictEqual(error,null);
+          assert.strictEqual(valid,true);
+          setTimeout(function() {
+            cache.validate(function(error,valid) {
+              assert.strictEqual(error,null);
+              assert.strictEqual(valid,false);
+              done();
+            });
+          },options.expires + 100);
+        });
+      });
+    });
+  });
+  
 });
 
 // - -------------------------------------------------------------------- - //
