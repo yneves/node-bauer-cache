@@ -1,6 +1,6 @@
 {
   "name": "bauer-cache",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Disk-cache library.",
   "keywords": [
     "disk",

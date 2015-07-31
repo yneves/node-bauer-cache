@@ -1,60 +1,44 @@
-# node-bauer-cache
+# bauer-cache
 Disk-cache library.
 
-# Usage
+## Installation
 
 ```
 npm install bauer-cache
 ```
 
+## Usage
+
 ```js
 var Cache = require("bauer-cache");
-```
 
-## new Cache(options Object)
-
-```js
-var cache = new Cache({
-  json: true,
-  file: "./cache.json",
-  expires: "1h"
+var myCache = new Cache({
+  file: {
+    dir: "./cache",
+    name: "filename",
+    ext: "json"
+  },
+  expires: "1d",
+  json: true
 });
-```
 
-## .write(content String|Object, callback Function)
-
-```js
-cache.write({ key: "value" },function(error) {
+myCache.validate(function(error,isValid) {
   
-});
-```
-
-## .read(callback Function)
-
-```js
-cache.read(function(error,data) {
-  
-});
-```
-
-## .exists(callback Function)
-
-```js
-cache.exists(function(error,exists) {
-  if (exists) {
+  if (isValid) {
+    
+    myCache.read(function(error,data) {
+      
+    });
+    
+  } else {
+    
+    myCache.write({ hello: "world" },function(error) {
+      
+    });
     
   }
 });
-```
 
-## .expired(callback Function)
-
-```js
-cache.expired(function(error,expired) {
-  if (expired) {
-    
-  }
-});
 ```
 
 # License
