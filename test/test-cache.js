@@ -142,6 +142,15 @@ describe("Cache",function() {
     });
   });
   
+  it("validate missing filename",function(done) {
+    var cache = new Cache({ json: true });
+    cache.validate(function(error) {
+      assert.ok(error instanceof Error);
+      assert.ok(error.message,"missing filename");
+      done();
+    });
+  });
+  
 });
 
 // - -------------------------------------------------------------------- - //
