@@ -151,6 +151,32 @@ describe("Cache",function() {
     });
   });
   
+  it("create dir",function(done) {
+    var file = __dirname + "/m/k/d/i/r/p/test.txt";
+    var cache = new Cache({ mkdir: true, file: file });
+    cache.write("test",function(error) {
+      assert.strictEqual(error,null);
+      assert.ok(fs.existsSync(file));
+      fs.unlinkSync(file);
+      fs.rmdirSync(__dirname + "/m/k/d/i/r/p");
+      fs.rmdirSync(__dirname + "/m/k/d/i/r");
+      fs.rmdirSync(__dirname + "/m/k/d/i");
+      fs.rmdirSync(__dirname + "/m/k/d");
+      fs.rmdirSync(__dirname + "/m/k");
+      fs.rmdirSync(__dirname + "/m");
+      done();
+    });
+  });
+  
+  it("dont create dir",function(done) {
+    var file = __dirname + "/m/k/d/i/r/p/test.txt";
+    var cache = new Cache({ mkdir: false, file: file });
+    cache.write("test",function(error) {
+      assert.ok(error instanceof Error);
+      done();
+    });
+  });
+  
 });
 
 // - -------------------------------------------------------------------- - //

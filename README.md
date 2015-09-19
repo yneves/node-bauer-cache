@@ -44,6 +44,8 @@ myCache.validate(function(error,isValid) {
 
   * `Cache`
     * `new Cache(options Object) :Cache`
+    * `.setMakeDir(mkdir Boolean)` :void
+    * `.getMakeDir() :Boolean`
     * `.setJSON(json Boolean) :void`
     * `.isJSON() :Boolean`
     * `.parseJSON(content String, callback Function) :void`
